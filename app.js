@@ -6,7 +6,7 @@ const MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://localhost:27017'
 
 MongoClient.connect(url, function(err, db) {
-  var dbo = db.db("db");
+  var dbo = db.db("mydb");
   dbo.listCollections().toArray(function(err, collInfos) {
       // collInfos is an array of collection info objects that look like:
       // { name: 'test', options: {} }
@@ -19,7 +19,7 @@ client.on('guildCreate', guild => {
 
   let id = guild.id;
   MongoClient.connect(url, function(err, db) {
-    var dbo = db.db("db");
+    var dbo = db.db("mydb");
 
     dbo.createCollection(id.toString(), function(err, res) {
       if (err) throw err;
@@ -139,4 +139,4 @@ client.on('guildMemberAdd', member => {
 
         }
       })
-      client.login("MjkyMDI2ODc5ODE5MzgyNzg0.Dub4YQ.0heVbdCt-TQ2UREc2cu4iDzhaiE")
+      client.login("MjkyMDI2ODc5ODE5MzgyNzg0.DudJOA.PdVk8KNORHHSBOi0MVvhnvl5wA4")
