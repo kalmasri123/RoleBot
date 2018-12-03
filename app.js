@@ -3,10 +3,10 @@ const client = new Discord.Client();
 const MongoClient = require('mongodb').MongoClient;
 
 
-var url = 'mongodb://localhost:27017'
+var url = process.env.MONGODB_URI
 
 MongoClient.connect(url, function(err, db) {
-  var dbo = db.db("mydb");
+  var dbo = db.db("heroku_352bvqlh");
   dbo.listCollections().toArray(function(err, collInfos) {
       // collInfos is an array of collection info objects that look like:
       // { name: 'test', options: {} }
@@ -19,7 +19,7 @@ client.on('guildCreate', guild => {
 
   let id = guild.id;
   MongoClient.connect(url, function(err, db) {
-    var dbo = db.db("mydb");
+    var dbo = db.db("heroku_352bvqlh");
 
     dbo.createCollection(id.toString(), function(err, res) {
       if (err) throw err;
@@ -38,7 +38,7 @@ client.on('guildMemberAdd', member => {
       member.guild.fetchInvites()
         .then(function(invites) {
           MongoClient.connect(url, function(err, db) {
-            var dbo = db.db("mydb");
+            var dbo = db.db("heroku_352bvqlh");
             console.log(member.guild.id)
             dbo.collection(member.guild.id.toString()).find().toArray(function(err, invs) {
               console.log(invs)
@@ -106,7 +106,7 @@ client.on('guildMemberAdd', member => {
 
                       MongoClient.connect(url, function(err, db) {
                         if (err) throw err;
-                        var dbo = db.db("mydb");
+                        var dbo = db.db("heroku_352bvqlh");
                         var myobj = {
                           invite: code[code.length - 1],
                           role: role.id,
@@ -139,4 +139,4 @@ client.on('guildMemberAdd', member => {
 
         }
       })
-      client.login("MjkyMDI2ODc5ODE5MzgyNzg0.DudJOA.PdVk8KNORHHSBOi0MVvhnvl5wA4")
+      client.login(process.env.TOKEN)
