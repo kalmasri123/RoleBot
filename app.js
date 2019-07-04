@@ -7,3 +7,7 @@ http.createServer(function (req, res) {
 }).listen(8080);
 
 
+
+setInterval(function() {
+    http.get("https://role-bot12.herokuapp.com/");
+}, 300000); // every 5 minutes (300000)
