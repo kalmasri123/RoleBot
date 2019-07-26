@@ -1,14 +1,12 @@
 var http = require('https');
 
-http.createServer().listen(process.env.PORT||8080,
-
+var server = http.createServer(
 function (req, res) {
   // add a HTTP header:
   res.writeHead(200, {'Content-Type': 'text/html'});
   res.write('Hello World!');
   res.end();
-})
-
+}).listen(process.env.PORT)
 
 setInterval(function() {
     http.get("https://role-bot12.herokuapp.com/");
