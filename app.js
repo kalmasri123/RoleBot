@@ -1,11 +1,12 @@
-
 var http = require('https');
+
 http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'json'});
-  console.log(req.body)
-  res.write({auth:true});
+  // add a HTTP header:
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write('Hello World!');
   res.end();
-}).listen(process.env.PORT);
+}).listen(process.env.PORT,8080);
+
 
 
 
