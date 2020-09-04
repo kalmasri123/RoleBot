@@ -19,7 +19,7 @@
   "homepage": "https://github.com/kalmasri123/RoleBot#readme",
   "dependencies": {
     "discord.js": "^11.4.2",
-    "mongodb": "^3.1.10"
+    "mongodb": "^3.1.13"
   },
   "devDependencies": {}
 }
